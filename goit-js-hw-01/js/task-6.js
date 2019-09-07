@@ -3,7 +3,7 @@
 let input;
 let total = 0;
 
-while (true) {
+while (input !== null) {
   input = prompt('Введите число');
 
   if (input === null) {
