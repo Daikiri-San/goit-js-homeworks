@@ -1,10 +1,4 @@
 /* eslint-disable no-alert */
-const deliveryToChinaPrice = 100;
-const deliveryToChilePrice = 250;
-const deliveryToAustraliaPrice = 170;
-const deliveryToIndiaDPrice = 80;
-const deliveryToJamaicaPrice = 120;
-
 const countryChina = 'Китай';
 const countryChile = 'Чили';
 const countryAustralia = 'Австралия';
@@ -17,23 +11,23 @@ let cost;
 const delivery = prompt('В какую страну необходима доставка?');
 switch (delivery.toUpperCase()) {
   case 'КИТАЙ':
-    cost = deliveryToChinaPrice;
+    cost = 100;
     alert(`Доставка в ${countryChina} будет стоить ${cost} кредитов`);
     break;
   case 'ЧИЛИ':
-    cost = deliveryToChilePrice;
+    cost = 250;
     alert(`Доставка в ${countryChile} будет стоить ${cost} кредитов`);
     break;
   case 'АВСТРАЛИЯ':
-    cost = deliveryToAustraliaPrice;
+    cost = 170;
     alert(`Доставка в ${countryAustralia} будет стоить ${cost} кредитов`);
     break;
   case 'ИНДИЯ':
-    cost = deliveryToIndiaDPrice;
+    cost = 80;
     alert(`Доставка в ${countryIndia} будет стоить ${cost} кредитов`);
     break;
   case 'ЯМАЙКА':
-    cost = deliveryToJamaicaPrice;
+    cost = 120;
     alert(`Доставка в ${countryJamaica} будет стоить ${cost} кредитов`);
     break;
   default:
