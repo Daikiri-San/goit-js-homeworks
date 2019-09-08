@@ -12,27 +12,27 @@ console.log(red);
 console.log(green);
 console.log(blue);
 
-let hex;
-let rgb;
-let rgbPercent;
-
 const rgbRedNumber = Math.floor(Math.random() * 255);
 const rgbGreenNumber = Math.floor(Math.random() * 255);
 const rgbBlueNumber = Math.floor(Math.random() * 255);
 
-rgb = `rgb(${rgbRedNumber}, ${rgbGreenNumber}, ${rgbBlueNumber})`;
+const rgb = `rgb(${rgbRedNumber}, ${rgbGreenNumber}, ${rgbBlueNumber})`;
 
 const rgbRedPercent = Math.floor(Math.random() * 100);
 const rgbGreenPercent = Math.floor(Math.random() * 100);
 const rgbBluePercent = Math.floor(Math.random() * 100);
 
-rgbPercent = `rgb(${rgbRedPercent}%, ${rgbGreenPercent}%, ${rgbBluePercent}%)`;
+const rgbPercent = `rgb(${rgbRedPercent}%, ${rgbGreenPercent}%, ${rgbBluePercent}%)`;
 
-const hexFirstPart = Math.floor(Math.random() * 255).toString(16);
-const hexSecondPart = Math.floor(Math.random() * 255).toString(16);
-const hexThirdPart = Math.floor(Math.random() * 255).toString(16);
+let hexFirstPart = Math.floor(Math.random() * 255).toString(16);
+let hexSecondPart = Math.floor(Math.random() * 255).toString(16);
+let hexThirdPart = Math.floor(Math.random() * 255).toString(16);
 
-hex = `#${hexFirstPart}${hexSecondPart}${hexThirdPart}`;
+let hexFirstPart;
+let hexSecondPart;
+let hexThirdPart;
+
+const hex = `#${hexFirstPart}${hexSecondPart}${hexThirdPart}`;
 
 // String.length > 1 ? string : '0' + string
 // let date = Date.now()
