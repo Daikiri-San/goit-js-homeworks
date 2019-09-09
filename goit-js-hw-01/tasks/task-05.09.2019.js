@@ -24,15 +24,15 @@ const rgbBluePercent = Math.floor(Math.random() * 100);
 
 const rgbPercent = `rgb(${rgbRedPercent}%, ${rgbGreenPercent}%, ${rgbBluePercent}%)`;
 
-let hexFirstPart = Math.floor(Math.random() * 255).toString(16);
-let hexSecondPart = Math.floor(Math.random() * 255).toString(16);
-let hexThirdPart = Math.floor(Math.random() * 255).toString(16);
+const hexPartOne = Math.floor(Math.random() * 255).toString(16);
+const hexPartTwo = Math.floor(Math.random() * 255).toString(16);
+const hexPartThree = Math.floor(Math.random() * 255).toString(16);
 
-let hexFirstPart;
-let hexSecondPart;
-let hexThirdPart;
+const firstHex = hexPartOne.length > 1 ? hexPartOne : `0${hexPartOne}`;
+const secondHex = hexPartTwo.length > 1 ? hexPartTwo : `0${hexPartTwo}`;
+const thirdHex = hexPartThree.length > 1 ? hexPartThree : `0${hexPartThree}`;
 
-const hex = `#${hexFirstPart}${hexSecondPart}${hexThirdPart}`;
+const hex = `#${firstHex}${secondHex}${thirdHex}`;
 
 // String.length > 1 ? string : '0' + string
 // let date = Date.now()
