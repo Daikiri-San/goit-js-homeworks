@@ -1,4 +1,3 @@
-/* eslint-disable no-constant-condition */
 /* eslint-disable no-alert */
 let input;
 let total = 0;
