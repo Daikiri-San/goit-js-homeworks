@@ -5,10 +5,7 @@ const PASSWORD__RESERVED = 'Такой логин уже используетс�
 const PASSWORD__SUCCESS = 'Логин успешно добавлен!';
 
 const isLoginValid = function (login) {
-  if (login.length >= 4 && login.length <= 16) {
-    return true;
-  }
-  return false;
+  return login.length >= 4 && login.length <= 16;
 };
 
 const isLoginUnique = function (allLogins, login) {
@@ -16,10 +13,10 @@ const isLoginUnique = function (allLogins, login) {
 };
 
 const addLogin = function (allLogins, login) {
-  if (isLoginValid(login) === false) {
+  if (!isLoginValid(login)) {
     return console.log(LENGTH_ERROR);
   }
-  if (isLoginUnique(allLogins, login) === true) {
+  if (isLoginUnique(allLogins, login)) {
     return console.log(PASSWORD__RESERVED);
   }
   allLogins.push(login);
