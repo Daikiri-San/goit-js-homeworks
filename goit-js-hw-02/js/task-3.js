@@ -1,4 +1,4 @@
-function findLongestWord(string) {
+const findLongestWord = (string) => {
   const stringSplit = string.split(' ');
   let longestWord;
   let lgth = 0;
@@ -10,7 +10,7 @@ function findLongestWord(string) {
   }
   const message = `Самое длинное слово в строке, это слово '${longestWord}'`;
   return message;
-}
+};
 
 console.log(findLongestWord('The quick brown fox jumped over the lazy dog')); // 'jumped'
 

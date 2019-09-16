@@ -1,4 +1,4 @@
-function formatString(string) {
+const formatString = (string) => {
   const formatedString = string;
   let message;
   const size = 40;
@@ -8,7 +8,7 @@ function formatString(string) {
     message = `${formatedString}`;
   }
   return message;
-}
+};
 
 console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
 // вернется оригинальная строка

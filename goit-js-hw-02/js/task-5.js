@@ -1,8 +1,4 @@
-function checkForSpam(str) {
-  // eslint-disable-next-line no-multi-spaces
-  const result =    str.toLowerCase().includes('spam') || str.toLowerCase().includes('sale');
-  return result;
-}
+const checkForSpam = str => str.toLowerCase().includes('spam') || str.toLowerCase().includes('sale');
 
 console.log(checkForSpam('Latest technology news')); // false
 

@@ -10,7 +10,7 @@ if (password === null) {
   message = MESSAGE_CANCEL_FROM_USER;
 } else if (password === ADMIN_PASSWORD) {
   message = MESSAGE_LOGIN_SUCCESS;
-} else if (password !== ADMIN_PASSWORD) {
+} else {
   message = MESSAGE_ACCES_DENIED;
 }
 alert(message);

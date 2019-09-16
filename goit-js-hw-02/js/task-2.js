@@ -1,9 +1,9 @@
-function calculateEngravingPrice(message, pricePerWord) {
+const calculateEngravingPrice = (message, pricePerWord) => {
   const countOfWord = message.split(' ').length;
   const total = countOfWord * pricePerWord;
   const result = `Данная гравировка будет вам стоить ${total} долларов`;
   return result;
-}
+};
 
 console.log(
   calculateEngravingPrice(
