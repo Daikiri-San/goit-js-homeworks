@@ -99,7 +99,7 @@ const account = {
       for (let i = 0; i < this.transactions.length; i += 1) {
         if (values.includes(type)) {
           console.log(type);
-          total = values[amount] + values[amount];
+          total = amount[i] + amount[i + 1];
           console.log(amount);
         }
       }
