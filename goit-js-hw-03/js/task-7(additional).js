@@ -10,6 +10,7 @@ const Transaction = {
 };
 
 const { DEPOSIT, WITHDRAW } = Transaction;
+let id;
 /*
  * Каждая транзакция это объект со свойствами: id, type и amount
  */
@@ -26,10 +27,7 @@ const account = {
    * Создает объект транзакции и вызывает addTransaction
    */
   deposit(amount) {
-    let id;
-    for (let i = -1; i < this.transactions.length; i += 1) {
-      id = `id - ${i}`;
-    }
+    id = Math.floor(Math.random() * 25555555).toString(16);
     const transactDepObj = { id, type: DEPOSIT, amount };
     this.addTransaction(transactDepObj);
     const addDeposit = this.balance + amount;
@@ -47,10 +45,7 @@ const account = {
     if (amount > this.balance) {
       return `Недостаточно средств для снятие данной суммы! На вашем счету ${this.balance}!`;
     }
-    let id;
-    for (let i = -1; i < this.transactions.length; i += 1) {
-      id = `id - ${i}`;
-    }
+    id = Math.floor(Math.random() * 25555555).toString(16);
     const transactDrawObj = { id, type: WITHDRAW, amount };
     this.addTransaction(transactDrawObj);
     const withdrawal = this.balance - amount;
@@ -75,11 +70,9 @@ const account = {
   /*
    * Метод ищет и возвращает объект транзации по id
    */
-  getTransactionDetails(id) {
-    let focusedID = 0;
+  getTransactionDetails(transactionID) {
     for (let i = 0; i < this.transactions.length; i += 1) {
-      focusedID = `id - ${i}`;
-      if (focusedID === id) {
+      if (transactionID === this.transactions[i]) {
         return this.transactions[i];
       }
     }
@@ -93,15 +86,9 @@ const account = {
   getTransactionTotal(type) {
     let total = 0;
     for (const key of this.transactions) {
-      const values = Object.values(key);
-      const { amount } = key;
-      console.log(values);
-      for (let i = 0; i < this.transactions.length; i += 1) {
-        if (values.includes(type)) {
-          console.log(type);
-          total = amount[i] + amount[i + 1];
-          console.log(amount);
-        }
+      const { type: transactionType, amount } = key;
+      if (transactionType === type) {
+        total += +amount;
       }
     }
     return total;
@@ -117,5 +104,5 @@ console.log(account.deposit(200));
 console.log(account.withdraw(130));
 console.log(account.withdraw(90));
 console.table(transactionStory);
-console.log(account.getTransactionDetails('id - 2'));
 console.log(account.getTransactionTotal('deposit'));
+console.log(account.getTransactionTotal('withdraw'));

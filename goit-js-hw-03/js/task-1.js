@@ -4,8 +4,11 @@ const user = {
   age: 20,
   hobby: 'html',
   premium: true,
-  ...{ mood: 'happy', hobby: 'javascript', premium: false },
 };
+
+user.mood = 'happy';
+user.hobby = 'javascript';
+user.premium = false;
 
 const keys = Object.keys(user);
 for (const key of keys) {
