@@ -72,7 +72,7 @@ const account = {
    */
   getTransactionDetails(transactionID) {
     for (let i = 0; i < this.transactions.length; i += 1) {
-      if (transactionID === this.transactions[i]) {
+      if (transactionID === this.transactions[i].id) {
         return this.transactions[i];
       }
     }
