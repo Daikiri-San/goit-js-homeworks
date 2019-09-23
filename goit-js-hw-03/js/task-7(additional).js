@@ -31,7 +31,8 @@ const account = {
     const transactDepObj = { id, type: DEPOSIT, amount };
     this.addTransaction(transactDepObj);
     const addDeposit = this.balance + amount;
-    return (this.balance = addDeposit);
+    this.balance = addDeposit;
+    return addDeposit;
   },
 
   /*
@@ -49,7 +50,8 @@ const account = {
     const transactDrawObj = { id, type: WITHDRAW, amount };
     this.addTransaction(transactDrawObj);
     const withdrawal = this.balance - amount;
-    return (this.balance = withdrawal);
+    this.balance = withdrawal;
+    return withdrawal;
   },
 
   /*
@@ -103,6 +105,7 @@ console.log(account.withdraw(40));
 console.log(account.deposit(200));
 console.log(account.withdraw(130));
 console.log(account.withdraw(90));
+console.log(account.getBalance());
 console.table(transactionStory);
 console.log(account.getTransactionTotal('deposit'));
 console.log(account.getTransactionTotal('withdraw'));
