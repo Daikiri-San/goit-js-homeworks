@@ -4,7 +4,7 @@ class Storage {
     this.items = array;
   }
 
-  get getItems() {
+  getItems() {
     return this.items;
   }
 
