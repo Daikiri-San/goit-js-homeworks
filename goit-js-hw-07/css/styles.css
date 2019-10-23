@@ -1,0 +1,50 @@
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#gallery {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+
+#gallery li img {
+  width: 28vw;
+  height: 100%;
+}
+
+#counter {
+  text-align: center;
+}
+
+#counter span {
+  font-size: 1.8rem;
+  padding: 0 1rem;
+}
+
+#counter button {
+  width: 3rem;
+  height: 3rem;
+  background-color: #fce38a;
+  transition: background-color 0.2s linear;
+  font-size: 1.6rem;
+}
+
+#counter button:hover,
+#counter button:focus {
+  background-color: #95e1d3;
+}
+
+#validation-input {
+  border: 3px solid #bdbdbd;
+}
+
+#validation-input.valid {
+  border-color: #4caf50;
+}
+
+#validation-input.invalid {
+  border-color: #f44336;
+}
