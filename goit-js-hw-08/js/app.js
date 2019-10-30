@@ -41,7 +41,7 @@ refs.gallery.insertAdjacentHTML('beforeend', markup);
 function openModal(event) {
   event.preventDefault();
   const { target } = event;
-  if (target.className !== 'gallery__image') {
+  if (!target.classList.contains('gallery__image')) {
     return;
   }
   refs.imageLightbox.setAttribute('src', target.dataset.source);
