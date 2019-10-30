@@ -99,7 +99,7 @@ function nextImg(event) {
 
 const lazyLoad = (target) => {
   const options = {
-    rootMargin: '300px 0px',
+    rootMargin: '200px 0px',
     threshold: 0.01,
   };
 
