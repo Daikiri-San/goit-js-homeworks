@@ -15,7 +15,6 @@ module.exports = env => webpackMerge(
       entry: './index.js',
       output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'app.js',
       },
       module: {
         rules: [
@@ -69,6 +68,7 @@ module.exports = env => webpackMerge(
           },
           {
             test: /\.hbs$/,
+            exclude: /node_modules/,
             use: 'handlebars-loader',
           },
         ],

@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.mode development",
-    "build": "webpack --env.mode production",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "build": "webpack --env.mode production"
   },
   "homepage": "https://daikiri-san.github.io/goit-js-homeworks",
   "repository": {
@@ -28,7 +26,6 @@
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
-    "gh-pages": "^2.1.1",
     "handlebars-loader": "^1.7.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",

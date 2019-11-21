@@ -59,18 +59,14 @@ function closeModalByClick({ target }) {
   if (target.className !== 'lightbox__content') {
     return;
   }
-  refs.lightbox.classList.remove('is-open');
-  refs.imageLightbox.removeAttribute('src');
-  refs.imageLightbox.removeAttribute('alt');
+  closeModal();
 }
 
 function closeModalByEsc(event) {
   if (event.keyCode !== 27) {
     return;
   }
-  refs.lightbox.classList.remove('is-open');
-  refs.imageLightbox.removeAttribute('src');
-  refs.imageLightbox.removeAttribute('alt');
+  closeModal();
 }
 
 function nextImg(event) {
