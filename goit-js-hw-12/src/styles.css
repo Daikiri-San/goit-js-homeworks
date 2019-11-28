@@ -41,6 +41,10 @@ body {
 .list-item,
 .designation {
   font-family: 'Alatsi', sans-serif;
+}
+
+.row-input,
+.row-input::placeholder {
   font-size: 1.4rem;
 }
 
@@ -53,6 +57,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 3rem;
 }
 
 .flag {
@@ -68,7 +73,12 @@ body {
 
 .country-item {
   font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
+}
+
+.list-item,
+.designation {
+  font-size: 1.8rem;
 }
 
 .country-list,
