@@ -33,7 +33,9 @@ function searchFromInput(e) {
     }
 
     clearRefs();
-    return fetchCountries(input).then(ar => ar.map(elem => refs.list.insertAdjacentHTML('beforeend', listOfCountries(elem)),),);
+    return fetchCountries(input)
+      .then(ar => ar.map(elem => listOfCountries(elem)).join(''))
+      .then(markup => refs.list.insertAdjacentHTML('beforeend', markup));
   });
 }
 
