@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable comma-spacing */
 /* eslint-disable comma-dangle */
 /* eslint-disable consistent-return */
@@ -5,13 +6,14 @@
 import refs from '../../utils/refs';
 import fetchCountries from '../vendors/fetchCountries';
 import oneCountry from '../../templates/oneCountry.hbs';
-import listOfCountries from '../../templates/listOfCountries.hbs';
 import clearRefs from '../clearFunctions/clearRefs';
 import pNotifyError from '../pNotify/pnotifyError';
 import pNotifyNotFound from '../pNotify/prontifyNotFound';
 import 'pnotify/dist/PNotifyBrightTheme.css';
 
 const debounce = require('lodash.debounce');
+
+let countriesArray;
 
 function searchFromInput(e) {
   const input = e.target.value;
@@ -32,11 +34,27 @@ function searchFromInput(e) {
       return fetchCountries(input).then(ar => ar.map(elem => refs.country.insertAdjacentHTML('beforeend', oneCountry(elem)),),);
     }
 
+    countriesArray = fetchCountries(input);
+
     clearRefs();
-    return fetchCountries(input)
-      .then(ar => ar.map(elem => listOfCountries(elem)).join(''))
+    fetchCountries(input)
+      .then(ar => ar
+          .map(
+            (elem, i) => `<li class="list-item" data-index="${i}">${elem.name}</li>`,
+          )
+          .join(''),)
       .then(markup => refs.list.insertAdjacentHTML('beforeend', markup));
+
+    return countriesArray;
   });
 }
 
+function choseOneCountry({ target }) {
+  clearRefs();
+  countriesArray
+    .then(ar => ar.filter((el, i) => i === Number(target.dataset.index)))
+    .then(country => country.map(elem => refs.country.insertAdjacentHTML('beforeend', oneCountry(elem)),),);
+}
+
 refs.input.addEventListener('input', debounce(searchFromInput, 500));
+refs.list.addEventListener('click', choseOneCountry);
