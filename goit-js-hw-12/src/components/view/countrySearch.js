@@ -34,15 +34,17 @@ function searchFromInput(e) {
       return fetchCountries(input).then(ar => ar.map(elem => refs.country.insertAdjacentHTML('beforeend', oneCountry(elem)),),);
     }
 
-    countriesArray = fetchCountries(input);
-
     clearRefs();
     fetchCountries(input)
-      .then(ar => ar
+      .then((ar) => {
+        countriesArray = ar;
+        const markup = ar
           .map(
             (elem, i) => `<li class="list-item" data-index="${i}">${elem.name}</li>`,
           )
-          .join(''),)
+          .join('');
+        return markup;
+      })
       .then(markup => refs.list.insertAdjacentHTML('beforeend', markup));
 
     return countriesArray;
@@ -51,9 +53,10 @@ function searchFromInput(e) {
 
 function choseOneCountry({ target }) {
   clearRefs();
-  countriesArray
-    .then(ar => ar.filter((el, i) => i === Number(target.dataset.index)))
-    .then(country => country.map(elem => refs.country.insertAdjacentHTML('beforeend', oneCountry(elem)),),);
+  const exactCountry = countriesArray.filter(
+    (el, i) => i === Number(target.dataset.index),
+  );
+  exactCountry.map(elem => refs.country.insertAdjacentHTML('beforeend', oneCountry(elem)),);
 }
 
 refs.input.addEventListener('input', debounce(searchFromInput, 500));
