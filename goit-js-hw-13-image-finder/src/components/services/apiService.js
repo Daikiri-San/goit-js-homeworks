@@ -5,14 +5,8 @@ import pnotifyNoMatchesFound from '../vendors/pnotifyNoMatchesFound';
 import pnotifyInfoEndOfSearch from '../vendors/pnotifyInfoEndOfSearch';
 import refs from '../../utils/refs';
 
-// const instance = axios.create({
-//   baseURL: 'https://pixabay.com/api/',
-// });
-axios.defaults.baseUrl = 'https://pixabay.com/api/';
-axios.defaults.headers = {
-  'Content-Type': 'application/json',
-  Accept: 'application/json',
-};
+axios.defaults.baseURL = 'https://pixabay.com/api';
+
 const key = '14527568-6591a78188764a7d597b0a4aa';
 
 export default {
@@ -20,11 +14,15 @@ export default {
   query: '',
   async fetchImagesApi() {
     try {
-      const requestParams = `?q=${this.query}&page=${this.page}&per_page=12&key=${key}`;
-      const response = await axios.get(requestParams);
-      console.log(response);
-      const images = await response.data.hits;
-      console.log(images);
+      const { data } = await axios.get('/', {
+        params: {
+          q: this.query,
+          page: this.page,
+          per_page: 12,
+          key,
+        },
+      });
+      const images = await data.hits;
       if (images.length === 0 && refs.gallery.children.length !== 0) {
         pnotifyInfoEndOfSearch();
         return;
