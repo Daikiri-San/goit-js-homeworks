@@ -1,10 +1,18 @@
 /* eslint-disable consistent-return */
 /* eslint-disable prefer-destructuring */
+import axios from 'axios';
 import pnotifyNoMatchesFound from '../vendors/pnotifyNoMatchesFound';
 import pnotifyInfoEndOfSearch from '../vendors/pnotifyInfoEndOfSearch';
 import refs from '../../utils/refs';
 
-const baseUrl = 'https://pixabay.com/api/';
+// const instance = axios.create({
+//   baseURL: 'https://pixabay.com/api/',
+// });
+axios.defaults.baseUrl = 'https://pixabay.com/api/';
+axios.defaults.headers = {
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
+};
 const key = '14527568-6591a78188764a7d597b0a4aa';
 
 export default {
@@ -13,9 +21,10 @@ export default {
   async fetchImagesApi() {
     try {
       const requestParams = `?q=${this.query}&page=${this.page}&per_page=12&key=${key}`;
-      const response = await fetch(baseUrl + requestParams);
-      const obj = await response.json();
-      const images = obj.hits;
+      const response = await axios.get(requestParams);
+      console.log(response);
+      const images = await response.data.hits;
+      console.log(images);
       if (images.length === 0 && refs.gallery.children.length !== 0) {
         pnotifyInfoEndOfSearch();
         return;
