@@ -11,7 +11,6 @@ const masonryInstance = new Masonry(refs.gallery, {
   columnWidth: '.grid-sizer',
   itemSelector: '.grid-item',
   gutter: 15,
-  stagger: 50,
   percentPosition: true,
 });
 
