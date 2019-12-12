@@ -10,7 +10,7 @@ import openLightBox from '../vendors/lightBox';
 const masonryInstance = new Masonry(refs.gallery, {
   columnWidth: '.grid-sizer',
   itemSelector: '.grid-item',
-  transitionDuration: '2s',
+  transitionDuration: '1s',
   gutter: 15,
   percentPosition: true,
 });
