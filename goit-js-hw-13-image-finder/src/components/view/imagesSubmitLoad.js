@@ -10,9 +10,8 @@ import openLightBox from '../vendors/lightBox';
 const masonryInstance = new Masonry(refs.gallery, {
   columnWidth: '.grid-sizer',
   itemSelector: '.grid-item',
-  transitionDuration: '1s',
+  transitionDuration: '0.8s',
   gutter: 15,
-  percentPosition: true,
 });
 
 async function searchImages() {
@@ -33,9 +32,11 @@ async function searchImages() {
 
   // await Promise.all(test);
 
+  // parsedItems.map(el => masonryInstance.appended(el));
+
   // refs.gallery.append(...parsedItems);
 
-  imagesLoaded(refs.gallery).on('always', masonryInstance.layout());
+  imagesLoaded(refs.gallery).on('progress', () => masonryInstance.layout());
 }
 
 async function searchImagesSubmitHandler(e) {
