@@ -18,7 +18,7 @@ export default {
         params: {
           q: this.query,
           page: this.page,
-          per_page: 10,
+          per_page: 12,
           key,
         },
       });
