@@ -1,10 +1,21 @@
+import Masonry from 'masonry-layout';
+import imagesLoaded from 'imagesloaded';
 import fetchImages from '../services/apiService';
-import clearSearch from '../clearFuncs/clearSearch';
 import refs from '../../utils/refs';
 import imageCards from '../../templates/imageCards.hbs';
 import createObserver from './IntObserver';
 import createGuardForObserver from '../createFuncs/createGuardforObserver';
 import openLightBox from '../vendors/lightBox';
+
+const masonryInstance = new Masonry(refs.gallery, {
+  columnWidth: '.grid-sizer',
+  itemSelector: '.grid-item',
+  gutter: 15,
+  stagger: 50,
+  percentPosition: true,
+});
+
+imagesLoaded(refs.gallery).on('progress', () => masonryInstance.layout());
 
 async function searchImages() {
   const fetchedArr = await fetchImages.fetchImagesApi();
@@ -12,7 +23,16 @@ async function searchImages() {
     return;
   }
   const markup = fetchedArr.map(obj => imageCards(obj)).join('');
-  refs.gallery.insertAdjacentHTML('beforeend', markup);
+  const proxyEL = document.createElement('div');
+  proxyEL.innerHTML = markup;
+
+  const parsedItems = Array.from(proxyEL.querySelectorAll('.grid-item'));
+
+  refs.gallery.append(...parsedItems);
+
+  parsedItems.map(el => masonryInstance.appended(el));
+
+  imagesLoaded(refs.gallery).on('progress', () => masonryInstance.layout());
 }
 
 async function searchImagesSubmitHandler(e) {
@@ -25,7 +45,8 @@ async function searchImagesSubmitHandler(e) {
     return;
   }
 
-  clearSearch();
+  refs.gallery.innerHTML = '<div class="grid-sizer"></div>';
+  refs.searchForm.query.value = '';
   fetchImages.page = 1;
   fetchImages.searchQuery = valueOfQuery;
 

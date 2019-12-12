@@ -23,7 +23,7 @@ export default {
         },
       });
       const images = await data.hits;
-      if (images.length === 0 && refs.gallery.children.length !== 0) {
+      if (images.length === 0 && refs.gallery.children.length !== 1) {
         pnotifyInfoEndOfSearch();
         return;
       }
