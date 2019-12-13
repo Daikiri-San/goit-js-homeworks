@@ -15,28 +15,25 @@ const masonryInstance = new Masonry(refs.gallery, {
 });
 
 async function searchImages() {
+  refs.spinner.classList.add('k-spinner--spin');
   const fetchedArr = await fetchImages.fetchImagesApi();
   if (fetchedArr === undefined) {
     return;
   }
+
   const markup = fetchedArr.map(obj => imageCards(obj)).join('');
   const proxyEL = document.createElement('div');
   proxyEL.innerHTML = markup;
-
   const parsedItems = Array.from(proxyEL.querySelectorAll('.grid-item'));
 
   parsedItems.map((el) => {
     refs.gallery.append(el);
     return masonryInstance.appended(el);
   });
-
-  // await Promise.all(test);
-
-  // parsedItems.map(el => masonryInstance.appended(el));
-
-  // refs.gallery.append(...parsedItems);
-
-  imagesLoaded(refs.gallery).on('progress', () => masonryInstance.layout());
+  imagesLoaded(refs.gallery).on('always', () => masonryInstance.layout());
+  setTimeout(() => {
+    refs.spinner.classList.remove('k-spinner--spin');
+  }, 1500);
 }
 
 async function searchImagesSubmitHandler(e) {

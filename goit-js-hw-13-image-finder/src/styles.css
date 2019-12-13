@@ -29,6 +29,8 @@ body {
 .stats {
   display: flex;
   justify-content: space-around;
+  opacity: 0;
+  animation: fade 3s ease-in-out 1 normal 0.5s forwards;
 }
 
 .grid {
@@ -64,6 +66,8 @@ body {
 
 .image {
   position: relative;
+  opacity: 0;
+  animation: fade 3s ease-in-out 1 normal forwards;
 }
 
 .grid-sizer,
@@ -108,4 +112,26 @@ body {
 
 #guardian {
   height: 0.4rem;
+}
+
+.k-spinner--spin {
+  position: fixed;
+  z-index: 50;
+  margin-top: 35vh;
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: 10rem;
+  height: 10rem;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
