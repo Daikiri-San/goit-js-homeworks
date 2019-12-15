@@ -5,7 +5,6 @@ import refs from '../../utils/refs';
 import imageCards from '../../templates/imageCards.hbs';
 import createObserver from './IntObserver';
 import createGuardForObserver from '../createFuncs/createGuardforObserver';
-import openLightBox from '../vendors/lightBox';
 
 const masonryInstance = new Masonry(refs.gallery, {
   columnWidth: '.grid-sizer',
@@ -52,7 +51,6 @@ async function searchImagesSubmitHandler(e) {
   fetchImages.searchQuery = valueOfQuery;
 
   await searchImages();
-  refs.gallery.addEventListener('click', openLightBox);
 
   if (refs.guard) {
     return;

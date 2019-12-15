@@ -1,11 +1,12 @@
 import * as basicLightbox from 'basiclightbox';
+import refs from '../../utils/refs';
 
 function openLightBox({ target }) {
   if (!target.classList.contains('currentImg')) {
     return;
   }
   const largeImg = target.dataset.source;
-  const image = `<img class="modalImg" src="${largeImg}" width="800" height="600">`;
+  const image = `<img src="${largeImg}" width="800" height="600">`;
   const instance = basicLightbox.create(image);
   instance.show();
   function closeLightBox(event) {
@@ -17,5 +18,6 @@ function openLightBox({ target }) {
   }
   document.body.addEventListener('keydown', closeLightBox);
 }
+refs.gallery.addEventListener('click', openLightBox);
 
 export default openLightBox;
