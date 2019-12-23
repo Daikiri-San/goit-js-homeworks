@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./index.js","webpack:///./clg.js"],"names":["console","log"],"mappings":"mIAGAA,QAAQC,ICHO,uB","file":"main.70ce4da4d5afb2a87925.js","sourcesContent":["import justClg from './clg';\r\nimport './styles.css';\r\n\r\nconsole.log(justClg);\r\n","export default 'Im working! Yeah!';\r\n"],"sourceRoot":""}
